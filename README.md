@@ -1,6 +1,6 @@
 # Computer Space
 
-### Por: Alejandro Aguirre Díaz y Alvaro Martin
+### Por: Alejandro Aguirre Díaz y Alvaro Martin Ortiz Ascencio
 
 ## Descripción
 
@@ -176,5 +176,5 @@ Métodos incluyen:
 - **actualizarJuego()**: Actualiza el estado del juego basándose en la entrada del usuario.
 - **renderizarJuego()**: Renderiza el estado actual del juego en la pantalla.
 
-Este diseño UML proporciona una visión clara de la estructura y relaciones entre las clases en el juego "Computer Space 1971", con detalles extendidos sobre los atributos, métodos y tipos de relaciones.
+
 
