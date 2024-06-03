@@ -1,3 +1,75 @@
-@startuml Computer Space
+@startuml Computer_Space
+
+class Juego {
+  - ancho: int
+  - alto: int
+  - nivelActual: Nivel
+  - puntaje: int
+  - estaCorriendo: bool
+  + iniciar(): void
+  + actualizar(): void
+  + renderizar(): void
+  + verificarColisiones(): void
+  + terminar(): void
+}
+
+class Nivel {
+  - numeroNivel: int
+  - jugador: NaveJugador
+  - enemigos: List<NaveEnemiga>
+  - proyectiles: List<Proyectil>
+  + iniciar(): void
+  + actualizar(): void
+  + renderizar(): void
+  + verificarColisiones(): void
+  + terminar(): void
+}
+
+class Nave {
+  - x: int
+  - y: int
+  - velocidad: int
+  - direccion: int
+  + mover(): void
+  + disparar(): Proyectil
+}
+
+class NaveJugador {
+  - vidas: int
+  + moverIzquierda(): void
+  + moverDerecha(): void
+  + moverArriba(): void
+  + moverAbajo(): void
+  + disparar(): Proyectil
+}
+
+class NaveEnemiga {
+  - patronComportamiento: int
+  + mover(): void
+  + disparar(): Proyectil
+}
+
+class Proyectil {
+  - x: int
+  - y: int
+  - velocidad: int
+  - direccion: int
+  + mover(): void
+}
+
+class ControladorJuego {
+  - juego: Juego
+  + manejarEntrada(): void
+  + actualizarJuego(): void
+  + renderizarJuego(): void
+}
+
+Juego o-- "1" Nivel
+Nivel "1" *-- "1" NaveJugador
+Nivel "1" *-- "0..*" NaveEnemiga
+Nivel "1" *-- "0..*" Proyectil
+Nave <|-- NaveJugador
+Nave <|-- NaveEnemiga
+ControladorJuego o-- Juego
 
 @enduml
