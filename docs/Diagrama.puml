@@ -40,13 +40,11 @@ class NaveJugador {
   + moverDerecha(): void
   + moverArriba(): void
   + moverAbajo(): void
-  + disparar(): Proyectil
 }
 
 class NaveEnemiga {
   - patronComportamiento: int
   + mover(): void
-  + disparar(): Proyectil
 }
 
 class Proyectil {

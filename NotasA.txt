@@ -1,1 +1,3 @@
 Prueba de conectividad :b
+Actualizar codigo de github al mio "git pull origin HEAD"
+https://refactoring.guru/es/design-patterns/observer patronComportamiento
