@@ -7,8 +7,11 @@ CC = g++
 # Rutas de las librerías de SFML
 SFML_LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
-# Archivos fuente
-SOURCES = src/main.cpp
+# Directorio de los archivos fuente
+SRC_DIR = src
+
+# Obtener todos los archivos fuente en el directorio SRC_DIR
+SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
 
 # Regla para compilar el programa
 $(TARGET): $(SOURCES)
