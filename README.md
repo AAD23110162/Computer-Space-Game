@@ -13,7 +13,7 @@ Este proyecto tiene como objetivo recrear el clásico juego de arcade **Computer
 - Código escrito en C++ y modelado en su mayoría con clases y objetos.
 
 ## Descripción de Clases, Métodos y Relaciones
-
+![Diagrama de Clases](assets/imagenes/Diagrama%20UML.png )
 ### Juego
 Representa el juego en sí, manteniendo el estado actual, como el nivel, el puntaje y si el juego está corriendo.
 - Métodos:
@@ -78,3 +78,28 @@ Interfaz para clases que deseen subscribirse a notificaciones de eventos.
 - `NaveJugador` y `NaveEnemiga` heredan de `Nave`.
 - `ControladorJuego` tiene una relación de composición con `Juego`.
 - `Notificador` tiene una relación de composición con `Subscriptor`, `NaveJugador`, `NaveEnemiga`, `Proyectil` y `ControladorJuego`, indicando que puede notificar a estas entidades sobre eventos.
+
+## Uso de la Clase Notificador y la Interfaz Subscriptor
+
+### Clase Notificador
+
+La clase `Notificador` permite realizar la comunicación entre diferentes partes del juego sin acoplamiento fuerte. Actúa como un publicador que notifica a sus suscriptores sobre eventos relevantes.
+
+- **Métodos Principales**:
+  - `AgregarSubscriptor(subscriptor: Subscriptor*)`: Añade un nuevo suscriptor a la lista de notificaciones.
+  - `Notificar(evento: sf::Event)`: Notifica a todos los suscriptores registrados sobre un evento, llamando al método `Actualizar` de cada uno.
+
+### Interfaz Subscriptor
+
+La interfaz `Subscriptor` define cómo los objetos pueden registrarse para recibir notificaciones de eventos. Cualquier clase que implemente esta interfaz puede actuar como suscriptor.
+
+- **Método Requerido**:
+  - `Actualizar(evento: sf::Event)`: Define la acción a realizar cuando se recibe una notificación de evento.
+
+### Flujo de Trabajo
+
+1. **Registro**: Las clases interesadas en recibir notificaciones (`NaveJugador`, `NaveEnemiga`, `ControladorJuego`, etc.) se registran en el `Notificador` como suscriptores.
+2. **Notificación**: Cuando ocurre un evento (entrada del usuario, cambios de estado, etc.), el `Notificador` invoca `Notificar`, pasando el evento a todos los suscriptores.
+3. **Manejo de Eventos**: Los suscriptores, a través de su implementación de `Actualizar`, responden al evento de manera adecuada.
+
+Este mecanismo facilita una comunicación eficiente y desacoplada entre diferentes componentes del juego, promoviendo un diseño de software más limpio y mantenible.
