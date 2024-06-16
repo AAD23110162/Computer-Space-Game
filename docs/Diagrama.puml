@@ -24,6 +24,16 @@ class Nivel {
   + verificarColisiones(): void
   + terminar(): void
 }
+class Notificador {
+  - observers: List<Subscriptor*>
+  + AgregarSubscriptor(subscriptor: Subscriptor*): void
+  + Notificar(evento: sf::Event): void
+}
+
+class Subscriptor {
+  + Actualizar(evento: sf::Event): void
+}
+
 
 class Nave {
   - x: int
@@ -62,6 +72,16 @@ class ControladorJuego {
   + renderizarJuego(): void
 }
 
+class Notificador {
+  - observers: List<Subscriptor*>
+  + AgregarSubscriptor(subscriptor: Subscriptor*): void
+  + Notificar(evento: sf::Event): void
+}
+
+class Subscriptor {
+  + Actualizar(evento: sf::Event): void
+}
+
 Juego o-- "1" Nivel
 Nivel "1" *-- "1" NaveJugador
 Nivel "1" *-- "0..*" NaveEnemiga
@@ -69,5 +89,8 @@ Nivel "1" *-- "0..*" Proyectil
 Nave <|-- NaveJugador
 Nave <|-- NaveEnemiga
 ControladorJuego o-- Juego
-
-@enduml
+Notificador "1" *-- "*" Subscriptor
+Notificador "1" *-- "0..*" NaveJugador
+Notificador "1" *-- "0..*" NaveEnemiga
+Notificador "1" *-- "0..*" Proyectil
+Notificador "1" *-- "0..*" ControladorJuego
