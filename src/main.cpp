@@ -1,12 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <NaveJugador.hpp>
 #include <Notificador.hpp>
+#include <NaveEnemiga.hpp>
 
 int main()
 {
     // Crea una ventana de SFML con una resolución de 800x600 píxeles y un título "Computer Space"
     sf::RenderWindow window(sf::VideoMode(800, 600), "Computer Space");
     NaveJugador naveJugador;
+    NaveEnemiga naveEnemiga;
     Notificador notificador;
     notificador.AgregarSubscriptor(&naveJugador);
 
@@ -30,7 +32,7 @@ int main()
 
             // Dibujar el objeto triangular
             naveJugador.Dibujar(window);
-
+            naveEnemiga.Dibujar(window);
             window.display();
         }
 
