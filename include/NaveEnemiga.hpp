@@ -1,3 +1,9 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include <Subscriptor.hpp>
+#include <iostream>
+#include <cmath>
+#include <ctime>
 class NaveEnemiga : public Subscriptor
 {
 private:

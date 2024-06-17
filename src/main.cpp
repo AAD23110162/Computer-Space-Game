@@ -2,6 +2,7 @@
 #include <NaveJugador.hpp>
 #include <Notificador.hpp>
 #include <NaveEnemiga.hpp>
+#include <Proyectil.hpp>
 
 int main()
 {
@@ -11,6 +12,8 @@ int main()
     NaveEnemiga naveEnemiga;
     Notificador notificador;
     notificador.AgregarSubscriptor(&naveJugador);
+
+    std::vector<Proyectil> proyectiles; // Declare and initialize the `proyectiles` variable
 
     while (window.isOpen())
     {
@@ -24,15 +27,26 @@ int main()
                     window.close();
                 else if (event.type == sf::Event::KeyPressed)
                 {
-                    notificador.Notificar(event);
+                    if (event.key.code == sf::Keyboard::Space)
+                    {
+                        naveJugador.disparar(proyectiles); // Use the `proyectiles` variable
+                    }
                 }
             }
-
             window.clear(sf::Color::Black);
 
             // Dibujar el objeto triangular
             naveJugador.Dibujar(window);
             naveEnemiga.Dibujar(window);
+            window.display();
+            for (auto& proyectil : proyectiles) {
+                proyectil.mover();
+            }
+
+            window.clear();
+            for (auto& proyectil : proyectiles) {
+                proyectil.dibujar(window);
+            }
             window.display();
         }
 

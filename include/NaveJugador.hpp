@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <Subscriptor.hpp>
+#include <Proyectil.hpp>
 #include <iostream>
 #include <cmath>
 #include <ctime>
@@ -68,5 +69,16 @@ public:
     void Dibujar(sf::RenderWindow &window)
     {
         window.draw(triangle);
+    }
+    sf::Vector2f getPosicion() const
+    {
+        return triangle.getPosition();
+    }
+    
+    void disparar(std::vector<Proyectil>& proyectiles) 
+    {
+        sf::Vector2f posicion = this->getPosicion();
+        sf::Vector2f direccion = {0, -1}; // Hacia arriba
+        proyectiles.push_back(Proyectil(posicion.x, posicion.y, 10.0f, direccion));
     }
 };
