@@ -33,6 +33,7 @@ int main()
             // Dibujar el objeto triangular
             naveJugador.Dibujar(window);
             naveEnemiga.Dibujar(window);
+            naveEnemiga.Mover();
             window.display();
         }
 

@@ -9,12 +9,12 @@ private:
 public:
     NaveEnemiga()
     {
-        rectangle.setSize(sf::Vector2f(50, 50));
+        rectangle.setSize(sf::Vector2f(20, 20));
         rectangle.setFillColor(sf::Color::White);
         rectangle.setPosition(375, 275);
-        velocidad = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Velocidad aleatoria entre 1 y 5
-        direccionX = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Dirección aleatoria inicial entre 1 y 5
-        direccionY = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Dirección aleatoria inicial entre 1 y 5
+        velocidad = 0.01f; // Set the velocity to 1 unit per second
+        direccionX = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Random initial direction between 1 and 5
+        direccionY = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Random initial direction between 1 and 5
     }
     virtual ~NaveEnemiga() {}
 
@@ -22,8 +22,8 @@ public:
     {
         sf::Vector2f currentPosition = rectangle.getPosition();
 
-        currentPosition.x += direccionX;
-        currentPosition.y += direccionY;
+        currentPosition.x += direccionX * velocidad;
+        currentPosition.y += direccionY * velocidad;
 
         rectangle.setPosition(currentPosition);
 
