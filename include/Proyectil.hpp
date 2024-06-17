@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <Subscriptor.hpp>
+#include <cmath>
 
 class Proyectil : public Subscriptor {
 private:
     sf::CircleShape forma;
-    float velocidad;
+    float velocidad = 0.000000001f;
     sf::Vector2f direccion;
 
 public:
@@ -17,7 +18,12 @@ public:
     }
 
     void mover() {
-        forma.move(velocidad * direccion);
+        float angle = forma.getRotation();
+        float radians = angle * 3.14159 / 180.0;
+        float dx = std::sin(radians) * 2;
+        float dy = -std::cos(radians) * 2;
+        direccion = sf::Vector2f(dx, dy);
+        forma.move(dx, dy);
     }
 
     virtual void Actualizar(sf::Event evento) override {
@@ -32,4 +38,4 @@ public:
     sf::Vector2f getPosicion() const {
         return forma.getPosition();
     }
-};
+};;

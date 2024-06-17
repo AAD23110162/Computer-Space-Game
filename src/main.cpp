@@ -17,41 +17,34 @@ int main()
 
     while (window.isOpen())
     {
-
-        while (window.isOpen())
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            sf::Event event;
-            while (window.pollEvent(event))
-            {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-                else if (event.type == sf::Event::KeyPressed)
+            if (event.type == sf::Event::Closed)
+                window.close();
+            else if (event.type == sf::Event::KeyPressed)
+            {   naveJugador.Actualizar(event);
+                if (event.key.code == sf::Keyboard::Space)
                 {
-                    if (event.key.code == sf::Keyboard::Space)
-                    {
-                        naveJugador.disparar(proyectiles); // Use the `proyectiles` variable
-                    }
+                    
+                    naveJugador.disparar(proyectiles); // Use the `proyectiles` variable
                 }
             }
-            window.clear(sf::Color::Black);
+        }
+       
+        window.clear(sf::Color::Black);
 
-            // Dibujar el objeto triangular
-            naveJugador.Dibujar(window);
-            naveEnemiga.Dibujar(window);
-            naveEnemiga.Mover();
-            window.display();
-            for (auto& proyectil : proyectiles) {
-                proyectil.mover();
-            }
+        // Dibujar el objeto triangular
+        naveJugador.Dibujar(window);
+        naveEnemiga.Dibujar(window);
+        naveEnemiga.Mover();
 
-            window.clear();
-            for (auto& proyectil : proyectiles) {
-                proyectil.dibujar(window);
-            }
-            window.display();
+        for (auto& proyectil : proyectiles)
+        {
+            proyectil.mover();
+            proyectil.dibujar(window);
         }
 
-        // Muestra en pantalla los cambios realizados
         window.display();
     }
 
