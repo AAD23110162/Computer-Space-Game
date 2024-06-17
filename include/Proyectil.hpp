@@ -7,14 +7,14 @@ class Proyectil : public Subscriptor {
 private:
     sf::CircleShape forma;
     float velocidad = 0.000000001f;
-    sf::Vector2f direccion;
 
 public:
-    Proyectil(float x, float y, float velocidad, sf::Vector2f direccion)
-        : velocidad(velocidad), direccion(direccion) {
+    Proyectil(float x, float y, float velocidad, float rotacion)
+        : velocidad(velocidad) {
         forma.setRadius(5.0f);
         forma.setFillColor(sf::Color::Red);
         forma.setPosition(x, y);
+        forma.setRotation(rotacion);
     }
 
     void mover() {
@@ -22,7 +22,6 @@ public:
         float radians = angle * 3.14159 / 180.0;
         float dx = std::sin(radians) * 2;
         float dy = -std::cos(radians) * 2;
-        direccion = sf::Vector2f(dx, dy);
         forma.move(dx, dy);
     }
 

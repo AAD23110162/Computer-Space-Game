@@ -14,7 +14,7 @@ SRC_DIR = src
 SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
 
 # Regla para compilar el programa
-$(TARGET): $(SOURCES)
+$(TARGET): $(SOURCES) $(wildcard include/*.hpp)
 	$(CC) $(CFLAGS) $^ -o $@ $(SFML_LIBS) -Iinclude
 
 # Regla para ejecutar el programa
