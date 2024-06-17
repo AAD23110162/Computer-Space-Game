@@ -25,10 +25,23 @@ public:
 
     void Mover()
     {
-        rectangle.move(velocidad, 0);
-        if (rectangle.getPosition().x >= 750 || rectangle.getPosition().x <= 0)
+        sf::Vector2f currentPosition = rectangle.getPosition();
+        float randomX = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Random value between 1 and 5
+        float randomY = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Random value between 1 and 5
+
+        currentPosition.x += randomX;
+        currentPosition.y += randomY;
+
+        rectangle.setPosition(currentPosition);
+
+        if (currentPosition.x >= 750 || currentPosition.x <= 0)
         {
-            velocidad = -velocidad;
+            randomX = -randomX;
+        }
+
+        if (currentPosition.y >= 550 || currentPosition.y <= 0)
+        {
+            randomY = -randomY;
         }
     }
 
