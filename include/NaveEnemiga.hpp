@@ -4,6 +4,8 @@
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
+#include <memory>
 
 class NaveEnemiga : public Subscriptor
 {
@@ -12,21 +14,18 @@ private:
     float velocidad;
 
 public:
-    NaveEnemiga(/* args */)
+    NaveEnemiga()
     {
         rectangle.setSize(sf::Vector2f(50, 50));
         rectangle.setFillColor(sf::Color::White);
         rectangle.setPosition(375, 275);
-        velocidad = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Random speed between 1 and 5
+        velocidad = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Velocidad aleatoria entre 1 y 5
     }
-    ~NaveEnemiga() {}
+    virtual ~NaveEnemiga() {}
 
     void Mover()
     {
-        // Actualizar la posición del rectángulo
         rectangle.move(velocidad, 0);
-
-        // Cambiar la dirección de movimiento aleatoriamente
         if (rectangle.getPosition().x >= 750 || rectangle.getPosition().x <= 0)
         {
             velocidad = -velocidad;
@@ -37,38 +36,10 @@ public:
     {
         window.draw(rectangle);
     }
-};
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window");
-
-    srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
-
-    const int numNaves = 2;
-    NaveEnemiga naves[numNaves];
-
-    while (window.isOpen())
+    // Implementación del método virtual puro de Subscriptor
+    virtual void Actualizar(sf::Event evento) override
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        for (int i = 0; i < numNaves; i++)
-        {
-            naves[i].Mover();
-        }
-
-        window.clear();
-        for (int i = 0; i < numNaves; i++)
-        {
-            naves[i].Dibujar(window);
-        }
-        window.display();
+        // Implementación específica para NaveEnemiga
     }
-
-    return 0;
-}
+};
