@@ -16,7 +16,9 @@ public:
         forma.setPosition(x, y);
         forma.setRotation(rotacion);
     }
-
+    sf::CircleShape getForma() const {
+        return forma;
+    }
     void mover() {
         float angle = forma.getRotation();
         float radians = angle * 3.14159 / 180.0;

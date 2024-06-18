@@ -43,7 +43,10 @@ public:
             direccionY = -direccionY;
         }
     }
-
+    sf::RectangleShape getForma() const
+    {
+        return rectangle;
+    }
     void Dibujar(sf::RenderWindow &window)
     {
         window.draw(rectangle);

@@ -44,6 +44,13 @@ int main()
             proyectil.mover();
             proyectil.dibujar(window);
         }
+        for (Proyectil& proyectil : proyectiles) {
+    // Verifica si el proyectil y la nave enemiga están colisionando
+    if (proyectil.getForma().getGlobalBounds().intersects(naveEnemiga.getForma().getGlobalBounds())) {
+        // Aquí es donde manejas la colisión. Por ejemplo, podrías destruir la nave enemiga y el proyectil.
+        std::cout << "Colision detectada!" << std::endl;
+    }
+}
 
         window.display();
     }
