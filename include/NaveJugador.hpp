@@ -41,8 +41,8 @@ public:
         {
             float angle = triangle.getRotation();
             float radians = angle * 3.14159 / 180.0;
-            float dx = std::sin(radians) * 2;
-            float dy = -std::cos(radians) * 2;
+            float dx = -std::sin(radians) * 2;
+            float dy = std::cos(radians) * 2;
 
             // Define the maximum speed and acceleration values
             float maxSpeed = 100.0f;
@@ -69,8 +69,8 @@ public:
         {
             float angle = triangle.getRotation();
             float radians = angle * 3.14159 / 180.0;
-            float dx = -std::sin(radians) * 5;
-            float dy = std::cos(radians) * 5;
+            float dx = std::sin(radians) * 5;
+            float dy = -std::cos(radians) * 5;
             triangle.move(dx, dy);
         }
     }
@@ -86,7 +86,7 @@ public:
     void disparar(std::vector<Proyectil> &proyectiles)
     {
         sf::Vector2f posicion = triangle.getPosition();
-        float angle = triangle.getRotation();
-        proyectiles.push_back(Proyectil(posicion.x, posicion.y, 10.0f, angle));
+        float angle = triangle.getRotation() + 180;
+        proyectiles.push_back(Proyectil(posicion.x, posicion.y, 0.1f, angle));
     }
 };

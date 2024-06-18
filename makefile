@@ -15,11 +15,11 @@ SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
 
 # Regla para compilar el programa
 $(TARGET): $(SOURCES) $(wildcard include/*.hpp)
-	$(CC) $(CFLAGS) $^ -o $@ $(SFML_LIBS) -Iinclude
+	$(CC) $^ -o $@ $(SFML_LIBS) -Iinclude
 
 # Regla para ejecutar el programa
 run: $(TARGET)
-	$(TARGET)
+	./$(TARGET)
 
 # Regla para limpiar los archivos generados
 clean:
