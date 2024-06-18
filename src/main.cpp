@@ -10,6 +10,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Computer Space");
     NaveJugador naveJugador;
     NaveEnemiga naveEnemiga;
+    NaveEnemiga naveEnemiga2;
     Notificador notificador;
     notificador.AgregarSubscriptor(&naveJugador);
 
@@ -71,7 +72,8 @@ int main()
         // Dibujar el objeto triangular
         naveJugador.Dibujar(window);
         naveEnemiga.Dibujar(window);
-        naveEnemiga.Mover();
+        naveEnemiga2.Dibujar(window);
+        
 
         for (auto& proyectil : proyectiles)
         {
@@ -84,12 +86,18 @@ int main()
                 std::cout << "Colision detectada!" << std::endl;
                 colisiones++;
             }
+            if (proyectil.getForma().getGlobalBounds().intersects(naveEnemiga2.getForma().getGlobalBounds())) {
+                // Aquí es donde manejas la colisión. Por ejemplo, podrías destruir la nave enemiga y el proyectil.
+                std::cout << "Colision detectada!" << std::endl;
+                colisiones++;
+            }
         }
 
         window.draw(tiempoText);
         window.draw(colisionesText);
-
+        naveEnemiga.Mover();
         window.display();
+         naveEnemiga2.Mover();
     }
 
     return 0;
