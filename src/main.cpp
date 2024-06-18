@@ -1,11 +1,15 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <NaveJugador.hpp>
 #include <Notificador.hpp>
 #include <NaveEnemiga.hpp>
 #include <Proyectil.hpp>
+#include <iostream> // Add the missing include for std::cout
 
 int main()
 {
+    sf::SoundBuffer disparoBuffer; 
+    sf::Sound disparoSound; 
     // Crea una ventana de SFML con una resolución de 800x600 píxeles y un título "Computer Space"
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Computer Space");
     NaveJugador naveJugador;
@@ -51,10 +55,22 @@ int main()
                 if (event.key.code == sf::Keyboard::Space)
                 {
                     naveJugador.disparar(proyectiles); // Use the `proyectiles` variable
+
+                    // Load the sound buffer from a file
+                    if (!disparoBuffer.loadFromFile("assets/sonidos/SDA.ogg"))
+                    {
+                        std::cout << "Error al cargar el archivo de sonido" << std::endl; // Print an error message if the sound file fails to load
+                    }
+                  
+
+                    // Set the sound buffer for the sound object
+                    disparoSound.setBuffer(disparoBuffer);
+
+                    // Play the sound
+                    disparoSound.play();
                 }
             }
         }
-
         sf::Time deltaTime = clock.restart();
         tiempoRestante -= deltaTime;
 
@@ -97,7 +113,7 @@ int main()
         window.draw(colisionesText);
         naveEnemiga.Mover();
         window.display();
-         naveEnemiga2.Mover();
+        naveEnemiga2.Mover();
     }
 
     return 0;
