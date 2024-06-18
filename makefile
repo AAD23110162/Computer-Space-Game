@@ -5,7 +5,7 @@ TARGET = bin/main
 CC = g++
 
 # Rutas de las librerías de SFML
-SFML_LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+SFML_LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Directorio de los archivos fuente
 SRC_DIR = src
