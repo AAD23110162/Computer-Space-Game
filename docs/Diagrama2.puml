@@ -1,0 +1,64 @@
+@startuml Computer_Space
+
+class Main {
+    +main() : int
+}
+
+class NaveJugador {
+    -triangle : sf::ConvexShape
+    +NaveJugador()
+    +~NaveJugador()
+    +Actualizar(evento : sf::Event) : void
+    +Dibujar(window : sf::RenderWindow) : void
+    +getPosicion() : sf::Vector2f const
+    +disparar(proyectiles : std::vector<Proyectil>&) : void
+}
+
+class NaveEnemiga {
+    -rectangle : sf::RectangleShape
+    -velocidad : float
+    -direccionX : float
+    -direccionY : float
+    +NaveEnemiga()
+    +~NaveEnemiga()
+    +Mover() : void
+    +getForma() : sf::RectangleShape const
+    +Dibujar(window : sf::RenderWindow) : void
+    +Actualizar(evento : sf::Event) : void
+}
+
+class Proyectil {
+    -forma : sf::CircleShape
+    -velocidad : float
+    +Proyectil(x : float, y : float, velocidad : float, rotacion : float)
+    +getForma() : sf::CircleShape const
+    +mover() : void
+    +Actualizar(evento : sf::Event) : void
+    +dibujar(target : sf::RenderTarget&) : void
+    +getPosicion() : sf::Vector2f const
+}
+
+class Notificador {
+    -observers : list<Subscriptor*>
+    +Notificador()
+    +~Notificador()
+    +AgregarSubscriptor(subscriptor : Subscriptor*) : void
+    +Notificar(evento : sf::Event) : void
+}
+
+class Subscriptor {
+    +Subscriptor()
+    +~Subscriptor()
+    +Actualizar(evento : sf::Event) : void
+}
+
+Main --> NaveJugador
+Main --> NaveEnemiga
+Main --> Notificador
+Main --> Proyectil
+Notificador "1" *-- "*" Subscriptor
+Subscriptor <|-- NaveJugador
+Subscriptor <|-- NaveEnemiga
+Subscriptor <|-- Proyectil
+
+@enduml
