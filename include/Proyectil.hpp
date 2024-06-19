@@ -19,7 +19,7 @@ public:
     sf::CircleShape getForma() const {
         return forma;
     }
-    void mover() {
+    void Mover() {
         float angle = forma.getRotation();
         float radians = angle * 3.14159 / 180.0;
         float dx = std::sin(radians) * 2;
@@ -32,11 +32,11 @@ public:
         // Por ahora, está vacío porque los proyectiles generalmente no responden a eventos directamente.
     }
 
-    void dibujar(sf::RenderTarget& target) {
+    void Dibujar(sf::RenderTarget& target) {
         target.draw(forma);
     }
 
-    sf::Vector2f getPosicion() const {
+    sf::Vector2f GetPosicion() const {
         return forma.getPosition();
     }
 };;

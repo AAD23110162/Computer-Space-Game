@@ -84,7 +84,7 @@ public:
         return triangle.getPosition();
     }
 
-    void disparar(std::vector<Proyectil> &proyectiles)
+    void Disparar(std::vector<Proyectil> &proyectiles)
     {
         
         sf::Vector2f posicion = triangle.getPosition();

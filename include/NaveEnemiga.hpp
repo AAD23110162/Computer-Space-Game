@@ -18,7 +18,7 @@ public:
         rectangle.setSize(sf::Vector2f(20, 20));
         rectangle.setFillColor(sf::Color::White);
         rectangle.setPosition(375, 275);
-        velocidad = 0.01f; // Set the velocity to 1 unit per second
+        velocidad = 0.05f; // Set the velocity to 1 unit per second
         direccionX = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Random initial direction between 1 and 5
         direccionY = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 4.0f + 1.0f; // Random initial direction between 1 and 5
     }

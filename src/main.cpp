@@ -54,7 +54,7 @@ int main()
                 naveJugador.Actualizar(event);
                 if (event.key.code == sf::Keyboard::Space)
                 {
-                    naveJugador.disparar(proyectiles); // Use the `proyectiles` variable
+                    naveJugador.Disparar(proyectiles); // Use the `proyectiles` variable
 
                     // Load the sound buffer from a file
                     if (!disparoBuffer.loadFromFile("assets/sonidos/SDA.ogg"))
@@ -93,8 +93,8 @@ int main()
 
         for (auto& proyectil : proyectiles)
         {
-            proyectil.mover();
-            proyectil.dibujar(window);
+            proyectil.Mover();
+            proyectil.Dibujar(window);
 
             // Verifica si el proyectil y la nave enemiga están colisionando
             if (proyectil.getForma().getGlobalBounds().intersects(naveEnemiga.getForma().getGlobalBounds())) {
