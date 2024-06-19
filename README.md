@@ -1,8 +1,8 @@
 # Computer Space
 
 ### Por: Alejandro Aguirre Díaz y Alvaro Martin Ortiz Ascencio
-##### Video de ejecuion del juego: Haz click sobre la imagen para ver el video
-[![Ver Video](./assets/imagenes/captura1.png)](./assets/video/Version%20FF.mp4 "Haz clic para ver el video") 
+##### Video de ejecución del juego: Haz click sobre la imagen para ver el video
+[![Ver Video](./assets/imagenes/Captura1.png)](https://drive.google.com/file/d/11fnyX4aNFE7H4ThUY0EqbtpfkTX9wL_Q/view?usp=sharing "Haz clic para ver el video") 
 
 ## Descripción
 
@@ -96,8 +96,8 @@ Representa la nave controlada por el jugador, con métodos para su actualizació
   - `~NaveJugador()`: Destructor.
   - `Actualizar(evento: sf::Event)`: Actualiza el estado de la nave basado en eventos.
   - `Dibujar(window: sf::RenderWindow)`: Dibuja la nave en la ventana proporcionada.
-  - `getPosicion()`: Devuelve la posición actual de la nave.
-  - `disparar(proyectiles: std::vector<Proyectil>&)`: Dispara un proyectil.
+  - `GetPosicion()`: Devuelve la posición actual de la nave.
+  - `Disparar(proyectiles: std::vector<Proyectil>&)`: Dispara un proyectil.
 
 #### Clase `NaveEnemiga`
 Representa las naves enemigas en el juego.
@@ -120,10 +120,10 @@ Representa los proyectiles disparados por las naves.
 - Métodos:
   - `Proyectil(x, y, velocidad, rotacion)`: Constructor que inicializa el proyectil.
   - `getForma()`: Devuelve la forma del proyectil.
-  - `mover()`: Actualiza la posición del proyectil.
+  - `Mover()`: Actualiza la posición del proyectil.
   - `Actualizar(evento: sf::Event)`: Actualiza el estado del proyectil basado en eventos.
-  - `dibujar(target: sf::RenderTarget&)`: Dibuja el proyectil en el objetivo proporcionado.
-  - `getPosicion()`: Devuelve la posición actual del proyectil.
+  - `Dibujar(target: sf::RenderTarget&)`: Dibuja el proyectil en el objetivo proporcionado.
+  - `GetPosicion()`: Devuelve la posición actual del proyectil.
 
 #### Clase `Notificador`
 Maneja el sistema de notificaciones para eventos dentro del juego.
